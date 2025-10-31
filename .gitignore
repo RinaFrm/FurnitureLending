@@ -9,3 +9,9 @@ Thumbs.db
 *.swo
 *~
 
+# Dependencies
+node_modules/
+
+# Build output
+css/output.css
+

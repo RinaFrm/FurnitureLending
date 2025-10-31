@@ -4,12 +4,1046 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FurnitureLending</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,600;6..12,700;6..12,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/output.css">
 </head>
 <body>
-    <main>
-        <!-- Контент лендинга будет здесь -->
-    </main>
+    <section class="relative bg-cover bg-center bg-no-repeat h-[985px] md:h-screen flex flex-col justify-between pb-[82px]" style="background-image: url('images/hero.webp');" aria-label="Главная секция">
+        <header class="relative py-5" role="banner">
+            <div class="max-w-1212 mx-auto px-4 flex justify-between items-center">
+                <a href="#" class="flex items-center gap-2.5 no-underline text-inherit transition-opacity hover:opacity-80" aria-label="На главную страницу">
+                    <img src="icons/logo.svg" alt="Логотип FurnitureLending" class="w-[100px] h-[52px] md:w-[137px] md:h-[72px]">
+                </a>
+                <!-- Десктопное меню -->
+                <nav class="hidden md:flex items-center gap-[49px]" aria-label="Главная навигация">
+                    <ul class="flex list-none gap-6" role="list">
+                        <li role="listitem"><a href="#" class="text-white no-underline text-lg font-semibold transition-opacity hover:opacity-80" aria-current="page">Главная</a></li>
+                        <li role="listitem"><a href="#about" class="text-white no-underline text-lg font-semibold transition-opacity hover:opacity-80">Про гида</a></li>
+                        <li role="listitem"><a href="#program" class="text-white no-underline text-lg font-semibold transition-opacity hover:opacity-80">Программа тура</a></li>
+                        <li role="listitem"><a href="#price" class="text-white no-underline text-lg font-semibold transition-opacity hover:opacity-80">Стоимость</a></li>
+                        <li role="listitem"><a href="#blog" class="text-white no-underline text-lg font-semibold transition-opacity hover:opacity-80">Блог</a></li>
+                        <li role="listitem"><a href="#contacts" class="text-white no-underline text-lg font-semibold transition-opacity hover:opacity-80">Контакты</a></li>
+                    </ul>
+                    <button type="button" class="px-6 py-3 bg-green text-white border-none text-base font-semibold cursor-pointer transition-opacity hover:opacity-90" aria-label="Заказать консультацию">Консультация</button>
+                </nav>
+                <!-- Бургер-меню кнопка -->
+                <button 
+                    id="burger-menu-btn" 
+                    type="button" 
+                    class="md:hidden flex flex-col gap-1.5 w-6 h-6 bg-transparent border-none cursor-pointer focus:outline-none" 
+                    aria-label="Открыть меню"
+                    aria-expanded="false"
+                >
+                    <span class="block w-6 h-0.5 bg-white transition-all"></span>
+                    <span class="block w-6 h-0.5 bg-white transition-all"></span>
+                    <span class="block w-6 h-0.5 bg-white transition-all"></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Мобильное меню -->
+        <div 
+            id="mobile-menu" 
+            class="fixed top-0 right-0 w-2/3 max-w-[280px] h-full bg-green z-50 transform translate-x-full transition-transform duration-300 ease-in-out md:hidden"
+            aria-hidden="true"
+        >
+            <div class="flex flex-col h-full p-6">
+                <button 
+                    id="close-menu-btn" 
+                    type="button" 
+                    class="self-end text-white text-2xl font-bold bg-transparent border-none cursor-pointer mb-8 w-6 h-6 flex items-center justify-center"
+                    aria-label="Закрыть меню"
+                >
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+                <nav class="flex flex-col gap-6" aria-label="Мобильная навигация">
+                    <a href="#" class="flex items-center gap-3 text-white no-underline text-lg font-normal transition-opacity hover:opacity-80" aria-current="page">
+                        <span class="text-gray-400">></span>
+                        <span>Про гида</span>
+                    </a>
+                    <a href="#program" class="flex items-center gap-3 text-white no-underline text-lg font-normal transition-opacity hover:opacity-80">
+                        <span class="text-gray-400">></span>
+                        <span>Программа тура</span>
+                    </a>
+                    <a href="#price" class="flex items-center gap-3 text-yellow no-underline text-lg font-normal transition-opacity hover:opacity-80">
+                        <span class="text-gray-400">></span>
+                        <span>Стоимость</span>
+                    </a>
+                    <a href="#blog" class="flex items-center gap-3 text-white no-underline text-lg font-normal transition-opacity hover:opacity-80">
+                        <span class="text-gray-400">></span>
+                        <span>Блог</span>
+                    </a>
+                    <a href="#contacts" class="flex items-center gap-3 text-white no-underline text-lg font-normal transition-opacity hover:opacity-80">
+                        <span class="text-gray-400">></span>
+                        <span>Контакты</span>
+                    </a>
+                </nav>
+            </div>
+        </div>
+        <!-- Overlay для мобильного меню -->
+        <div 
+            id="menu-overlay" 
+            class="fixed inset-0 bg-black/50 z-40 hidden opacity-0 transition-opacity duration-300 md:hidden"
+            aria-hidden="true"
+        ></div>
+
+        <div class="relative flex items-center justify-center px-4">
+            <div class="max-w-[1200px] w-full flex flex-col items-start gap-[20px] md:gap-[41px]">
+                <h1 class="text-[28px] md:text-[50px] font-bold text-start text-white leading-tight font-next tracking-[1px] md:tracking-[2px] max-w-full md:max-w-[1080px]">
+                    НАСЛАДИСЬ ПРОГУЛКОЙ В ГОРАХ<br/> С КОМАНДОЙ ЕДИНОМЫШЛЕННИКОВ
+                </h1>
+                
+                <form class="flex flex-col md:flex-row gap-4 md:gap-6 bg-white/20 px-4 md:px-[42px] py-6 md:py-10 rounded-[10px] w-full" aria-label="Поиск тура" method="get" action="#">
+                    <div class="flex-1 flex flex-col gap-2">
+                        <div class="relative custom-dropdown">
+                            <input type="hidden" id="tour-location" name="location" value="" aria-required="true">
+                            <button
+                                type="button"
+                                class="dropdown-toggle w-full py-[14px] px-4 bg-transparent border border-border rounded-[8px] text-base text-white outline-none appearance-none cursor-pointer focus:border-white/50 text-left flex items-center justify-between"
+                                aria-label="Выберите локацию для тура"
+                                aria-haspopup="listbox"
+                                aria-expanded="false"
+                            >
+                                <span class="dropdown-selected-text">Локация для тура</span>
+                                <svg class="w-4 h-4 text-white pointer-events-none dropdown-arrow transition-transform" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                    <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <ul class="dropdown-menu absolute top-full left-0 right-0 mt-1 bg-white rounded-[8px] border border-border shadow-lg z-50 max-h-[200px] overflow-y-auto hidden" role="listbox">
+                                <li class="dropdown-option px-4 py-3 text-black cursor-pointer hover:bg-green hover:text-white transition-colors first:rounded-t-[8px] last:rounded-b-[8px]" data-value="alps" role="option">Альпы</li>
+                                <li class="dropdown-option px-4 py-3 text-black cursor-pointer hover:bg-green hover:text-white transition-colors first:rounded-t-[8px] last:rounded-b-[8px]" data-value="caucasus" role="option">Кавказ</li>
+                                <li class="dropdown-option px-4 py-3 text-black cursor-pointer hover:bg-green hover:text-white transition-colors first:rounded-t-[8px] last:rounded-b-[8px]" data-value="ural" role="option">Урал</li>
+                                <li class="dropdown-option px-4 py-3 text-black cursor-pointer hover:bg-green hover:text-white transition-colors first:rounded-t-[8px] last:rounded-b-[8px]" data-value="altai" role="option">Алтай</li>
+                                <li class="dropdown-option px-4 py-3 text-black cursor-pointer hover:bg-green hover:text-white transition-colors first:rounded-t-[8px] last:rounded-b-[8px]" data-value="kamchatka" role="option">Камчатка</li>
+                            </ul>
+                        </div>
+                        <label for="tour-location" class="text-sm text-white font-regular">выберите из списка</label>
+                    </div>
+                    
+                    <div class="flex-1 flex flex-col gap-2">
+                        <div class="flex flex-col md:flex-row gap-2">
+                            <div class="flex-1 relative">
+                                <input 
+                                    type="date" 
+                                    id="tour-date-from" 
+                                    name="date-from"
+                                    class="w-full py-[14px] px-4 pr-11 bg-transparent border border-border rounded-[8px] text-base text-white outline-none placeholder:text-white focus:border-white/50 date-input"
+                                    aria-label="Дата начала похода"
+                                    aria-required="true"
+                                >
+                                <svg class="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white pointer-events-none" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                    <rect x="3" y="4" width="10" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                                    <path d="M5 2V6M11 2V6M3 8H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                            <div class="flex-1 relative">
+                                <input 
+                                    type="date" 
+                                    id="tour-date-to" 
+                                    name="date-to"
+                                    class="w-full py-[14px] px-4 pr-11 bg-transparent border border-border rounded-[8px] text-base text-white outline-none placeholder:text-white focus:border-white/50 date-input"
+                                    aria-label="Дата окончания похода"
+                                    aria-required="true"
+                                >
+                                <svg class="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white pointer-events-none" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                    <rect x="3" y="4" width="10" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                                    <path d="M5 2V6M11 2V6M3 8H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <label for="tour-date-from" class="text-sm text-white font-regular">укажите диапазон</label>
+                    </div>
+                    
+                    <div class="flex-1 flex flex-col gap-2">
+                        <div class="relative custom-dropdown">
+                            <input type="hidden" id="tour-participants" name="participants" value="" aria-required="true" aria-describedby="participants-hint">
+                            <button
+                                type="button"
+                                class="dropdown-toggle w-full py-[14px] px-4 bg-transparent border border-border rounded-[8px] text-base text-white outline-none appearance-none cursor-pointer focus:border-white/50 text-left flex items-center justify-between"
+                                aria-label="Укажите количество участников"
+                                aria-haspopup="listbox"
+                                aria-expanded="false"
+                            >
+                                <span class="dropdown-selected-text">Участники</span>
+                                <svg class="w-4 h-4 text-white pointer-events-none dropdown-arrow transition-transform" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                                    <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <ul class="dropdown-menu absolute top-full left-0 right-0 mt-1 bg-white rounded-[8px] border border-border shadow-lg z-50 max-h-[200px] overflow-y-auto hidden" role="listbox">
+                                <li class="dropdown-option px-4 py-3 text-black cursor-pointer hover:bg-green hover:text-white transition-colors first:rounded-t-[8px] last:rounded-b-[8px]" data-value="4" role="option">4 человека</li>
+                                <li class="dropdown-option px-4 py-3 text-black cursor-pointer hover:bg-green hover:text-white transition-colors first:rounded-t-[8px] last:rounded-b-[8px]" data-value="5" role="option">5 человек</li>
+                                <li class="dropdown-option px-4 py-3 text-black cursor-pointer hover:bg-green hover:text-white transition-colors first:rounded-t-[8px] last:rounded-b-[8px]" data-value="6" role="option">6 человек</li>
+                                <li class="dropdown-option px-4 py-3 text-black cursor-pointer hover:bg-green hover:text-white transition-colors first:rounded-t-[8px] last:rounded-b-[8px]" data-value="7" role="option">7 человек</li>
+                                <li class="dropdown-option px-4 py-3 text-black cursor-pointer hover:bg-green hover:text-white transition-colors first:rounded-t-[8px] last:rounded-b-[8px]" data-value="8" role="option">8 человек</li>
+                                <li class="dropdown-option px-4 py-3 text-black cursor-pointer hover:bg-green hover:text-white transition-colors first:rounded-t-[8px] last:rounded-b-[8px]" data-value="9" role="option">9 человек</li>
+                                <li class="dropdown-option px-4 py-3 text-black cursor-pointer hover:bg-green hover:text-white transition-colors first:rounded-t-[8px] last:rounded-b-[8px]" data-value="10" role="option">10 человек</li>
+                                <li class="dropdown-option px-4 py-3 text-black cursor-pointer hover:bg-green hover:text-white transition-colors first:rounded-t-[8px] last:rounded-b-[8px]" data-value="10+" role="option">Более 10 человек</li>
+                            </ul>
+                        </div>
+                        <label for="tour-participants" class="text-sm text-white font-regular">минимум 4 человека</label>
+                        <span id="participants-hint" class="absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0" style="clip: rect(0, 0, 0, 0);">Минимальное количество участников - 4 человека</span>
+                    </div>
+                    
+                    <button type="submit" class="py-4 px-[36px] bg-white text-black border-none rounded-[4px] text-[16px] font-bold cursor-pointer whitespace-nowrap transition-opacity hover:opacity-90 self-start w-full md:w-auto" aria-label="Найти программу тура">Найти программу</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-[50px] md:py-[100px] bg-white">
+        <div class="max-w-1212 mx-auto px-4">
+            <div class="flex md:grid flex-col-reverse lg:grid-cols-[480px_1fr] items-center gap-10 md:gap-[120px]">
+                <div class="w-full relative">
+                    <div class="relative md:h-[526px]">
+                        <img 
+                            src="images/about-1.webp" 
+                            alt="Горный пейзаж" 
+                            class="w-[350px] relative"
+                        >
+                        <img 
+                            src="images/about-2.webp" 
+                            alt="Горный поход" 
+                            class="absolute top-[120px] right-0 w-[350px] z-10 md:block hidden"
+                        >
+                    </div>
+                </div>
+
+                <div class="w-full flex flex-col gap-10">
+                    <div class="space-y-2">
+                        <span class="text-yellow text-base md:text-[24px] font-regular">о нашем походе</span>
+                        <h2 class="text-[24px] md:text-[32px] font-bold text-black leading-tight">
+                            Исследуйте все горные массивы мира вместе с нами
+                        </h2>
+                    </div>
+                    
+                    <p class="text-base md:text-lg text-black leading-relaxed">
+                        Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur" и занялся его поисками в классической латинской литературе.
+                    </p>
+                    <button 
+                        type="button" 
+                        class="self-start px-[36px] py-4 bg-green text-white border-none rounded-[4px] text-base font-semibold cursor-pointer transition-opacity hover:opacity-90 mx-auto md:mr-auto"
+                        aria-label="Посмотреть программу тура"
+                    >
+                        Программа тура
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="program" class="py-[50px] md:py-[100px] bg-background">
+        <div class="max-w-1212 mx-auto px-4">
+            <div class="flex flex-col md:grid lg:grid-cols-[580px_1fr] items-center gap-[90px]">
+                <div class="flex flex-col gap-10">
+                    <div class="space-y-2">
+                        <span class="text-yellow text-base md:text-[24px] font-regular">наше предложение</span>
+                        <h2 class="text-[24px] md:text-[32px] font-bold text-black leading-tight">
+                            Лучшие программы для тебя
+                        </h2>
+                    </div>
+                    
+                    <p class="text-base md:text-lg text-black leading-relaxed">
+                        Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur" и занялся его поисками в классической латинской литературе.
+                    </p>
+
+                    <div class="flex flex-col gap-8">
+                        <div class="flex gap-4 items-center">
+                            <div class="flex-shrink-0 w-[50px] h-[50px] bg-[#E5EEEB] rounded-[4px] flex items-center justify-center">
+                                <img src="icons/people.svg" alt="Опытный гид" class="w-[36px] h-[36px]">
+                            </div>
+                            <div class="flex-1 space-y-1">
+                                <h3 class="text-[18px] font-bold text-black">Опытный гид</h3>
+                                <p class="text-[14px] text-black/70 leading-relaxed">
+                                    Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4 items-center">
+                            <div class="flex-shrink-0 w-[50px] h-[50px] bg-[#E3E6EE] rounded-[4px] flex items-center justify-center">
+                                <img src="icons/shield.svg" alt="Безопасный поход" class="w-[36px] h-[36px]">
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-[18px] font-bold text-black">Безопасный поход</h3>
+                                <p class="text-[14px] text-black leading-relaxed">
+                                    Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-4 items-center">
+                            <div class="flex-shrink-0 w-[50px] h-[50px] bg-[#F3F1E1] rounded-[4px] flex items-center justify-center">
+                                <img src="icons/price.svg" alt="Лояльные цены" class="w-[36px] h-[36px]">
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-[18px] font-bold text-black">Лояльные цены</h3>
+                                <p class="text-[14px] text-black leading-relaxed">
+                                    Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button 
+                        type="button" 
+                        class="self-start px-[36px] py-4 bg-green text-white border-none rounded-[4px] text-base font-semibold cursor-pointer transition-opacity hover:opacity-90 mx-auto"
+                        aria-label="Посмотреть стоимость программ"
+                    >
+                        Стоимость программ
+                    </button>
+                </div>
+
+                <div class="hidden md:grid grid-cols-2 gap-2.5">
+                    <img 
+                        src="images/programs-1.webp" 
+                        alt="Программа тура 1" 
+                        class="w-full rounded-lg object-cover"
+                    >
+                    <img 
+                        src="images/programs-2.webp" 
+                        alt="Программа тура 2" 
+                        class="w-full rounded-lg object-cover"
+                    >
+                    <img 
+                        src="images/programs-3.webp" 
+                        alt="Программа тура 3" 
+                        class="w-full rounded-lg object-cover"
+                    >
+                    <img 
+                        src="images/programs-4.webp" 
+                        alt="Программа тура 4" 
+                        class="w-full rounded-lg object-cover"
+                    >
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="price" class="py-[50px] md:py-[100px] bg-white">
+        <div class="max-w-1212 mx-auto px-4 flex flex-col gap-[50px]">
+            <div class="flex flex-col gap-2 mx-auto items-center">
+                <span class="text-yellow text-base md:text-[24px] font-regular">по версии отдыхающих</span>
+                <h2 class="text-[24px] md:text-[32px] font-bold text-black leading-tight">
+                    Популярные направления
+                </h2>
+            </div>
+
+            <div class="relative">
+                <div class="swiper destinations-swiper md:hidden">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="relative rounded-[32px] overflow-hidden group cursor-pointer">
+                                <img 
+                                    src="images/trip-1.webp" 
+                                    alt="Озеро возле гор" 
+                                    class="w-full h-[400px] object-cover transition-transform duration-300 group-hover:scale-105"
+                                >
+                                <div class="absolute top-[50px] right-0 bg-white/40 backdrop-blur-[4px] rounded-[4px] px-2 py-1 flex items-center gap-1">
+                                    <svg class="w-5 h-5 text-yellow" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                    <span class="text-black font-semibold text-sm">4.9</span>
+                                </div>
+                                <div class="absolute bottom-0 left-0 right-0 bg-white/20 backdrop-blur-[6px] px-8 py-5 flex flex-row justify-between items-center">
+                                    <div class="flex flex-col">
+                                        <h3 class="text-white text-[18px] md:text-[24px] font-bold">Озеро возле гор</h3>
+                                        <p class="text-white/90 text-[14px] font-regular md:flex hidden">романтическое приключение</p>
+                                    </div>
+                                    <span class="text-white text-[18px] font-semibold bg-white/30 rounded-[4px] px-4 py-2 h-auto">480 $</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="relative rounded-[32px] overflow-hidden group cursor-pointer">
+                                <img 
+                                    src="images/trip-2.webp" 
+                                    alt="Ночь в горах" 
+                                    class="w-full h-[400px] object-cover transition-transform duration-300 group-hover:scale-105"
+                                >
+                                <div class="absolute top-[50px] right-0 bg-white/40 backdrop-blur-[4px] rounded-[4px] px-2 py-1 flex items-center gap-1">
+                                    <svg class="w-5 h-5 text-yellow" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                    <span class="text-black font-semibold text-sm">4.5</span>
+                                </div>
+                                <div class="absolute bottom-0 left-0 right-0 bg-white/20 backdrop-blur-[6px] px-8 py-5 flex flex-row justify-between items-center">
+                                    <div class="flex flex-col">
+                                        <h3 class="text-white text-[18px] md:text-[24px] font-bold">Ночь в горах</h3>
+                                        <p class="text-white/90 text-[14px] font-regular md:flex hidden">в компании друзей</p>
+                                    </div>
+                                    <span class="text-white text-[18px] font-semibold bg-white/30 rounded-[4px] px-4 py-2 h-auto">500 $</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="relative rounded-[32px] overflow-hidden group cursor-pointer">
+                                <img 
+                                    src="images/trip-3.webp" 
+                                    alt="Йога в горах" 
+                                    class="w-full h-[400px] object-cover transition-transform duration-300 group-hover:scale-105"
+                                >
+                                <div class="absolute top-[50px] right-0 bg-white/40 backdrop-blur-[4px] rounded-[4px] px-2 py-1 flex items-center gap-1">
+                                    <svg class="w-5 h-5 text-yellow" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                    </svg>
+                                    <span class="text-black font-semibold text-sm">5.0</span>
+                                </div>
+                                <div class="absolute bottom-0 left-0 right-0 bg-white/20 backdrop-blur-[6px] px-8 py-5 flex flex-row justify-between items-center">
+                                    <div class="flex flex-col">
+                                        <h3 class="text-white text-[18px] md:text-[24px] font-bold">Йога в горах</h3>
+                                        <p class="text-white/90 text-[14px] font-regular md:flex hidden">для тех, кто заботится о себе</p>
+                                    </div>
+                                    <span class="text-white text-[18px] font-semibold bg-white/30 rounded-[4px] px-4 py-2 h-auto">230 $</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Десктопная сетка -->
+                <div class="hidden md:grid lg:grid-cols-3 gap-6">
+                    <div>
+                        <div class="relative rounded-[32px] overflow-hidden group cursor-pointer">
+                            <img 
+                                src="images/trip-1.webp" 
+                                alt="Озеро возле гор" 
+                                class="w-full h-[500px] object-cover transition-transform duration-300 group-hover:scale-105"
+                            >
+                            <div class="absolute top-[50px] right-0 bg-white/40 backdrop-blur-[4px] rounded-[4px] px-2 py-1 flex items-center gap-1">
+                                <svg class="w-5 h-5 text-yellow" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                </svg>
+                                <span class="text-black font-semibold text-sm">4.9</span>
+                            </div>
+                            <div class="absolute bottom-0 left-0 right-0 bg-white/20 backdrop-blur-[6px] px-8 py-5 flex flex-row justify-between items-center">
+                                <div class="flex flex-col">
+                                    <h3 class="text-white text-[18px] md:text-[24px] font-bold">Озеро возле гор</h3>
+                                    <p class="text-white/90 text-[14px] font-regular md:flex hidden">романтическое приключение</p>
+                                </div>
+                                <span class="text-white text-[18px] font-semibold bg-white/30 rounded-[4px] px-4 py-2 h-auto">480 $</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="relative rounded-[32px] overflow-hidden group cursor-pointer">
+                            <img 
+                                src="images/trip-2.webp" 
+                                alt="Ночь в горах" 
+                                class="w-full h-[500px] object-cover transition-transform duration-300 group-hover:scale-105"
+                            >
+                            <div class="absolute top-[50px] right-0 bg-white/40 backdrop-blur-[4px] rounded-[4px] px-2 py-1 flex items-center gap-1">
+                                <svg class="w-5 h-5 text-yellow" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                </svg>
+                                <span class="text-black font-semibold text-sm">4.5</span>
+                            </div>
+                            <div class="absolute bottom-0 left-0 right-0 bg-white/20 backdrop-blur-[6px] px-8 py-5 flex flex-row justify-between items-center">
+                                <div class="flex flex-col">
+                                    <h3 class="text-white text-[18px] md:text-[24px] font-bold">Ночь в горах</h3>
+                                    <p class="text-white/90 text-[14px] font-regular md:flex hidden">в компании друзей</p>
+                                </div>
+                                <span class="text-white text-[18px] font-semibold bg-white/30 rounded-[4px] px-4 py-2 h-auto">500 $</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="relative rounded-[32px] overflow-hidden group cursor-pointer">
+                            <img 
+                                src="images/trip-3.webp" 
+                                alt="Йога в горах" 
+                                class="w-full h-[500px] object-cover transition-transform duration-300 group-hover:scale-105"
+                            >
+                            <div class="absolute top-[50px] right-0 bg-white/40 backdrop-blur-[4px] rounded-[4px] px-2 py-1 flex items-center gap-1">
+                                <svg class="w-5 h-5 text-yellow" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                                </svg>
+                                <span class="text-black font-semibold text-sm">5.0</span>
+                            </div>
+                            <div class="absolute bottom-0 left-0 right-0 bg-white/20 backdrop-blur-[6px] px-8 py-5 flex flex-row justify-between items-center">
+                                <div class="flex flex-col">
+                                    <h3 class="text-white text-[18px] md:text-[24px] font-bold">Йога в горах</h3>
+                                    <p class="text-white/90 text-[14px] font-regular md:flex hidden">для тех, кто заботится о себе</p>
+                                </div>
+                                <span class="text-white text-[18px] font-semibold bg-white/30 rounded-[4px] px-4 py-2 h-auto">230 $</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-center">
+                <button 
+                    type="button" 
+                    class="px-[36px] py-4 bg-green text-white border-none rounded-[4px] text-base font-semibold cursor-pointer transition-opacity hover:opacity-90"
+                    aria-label="Посмотреть рейтинг направлений"
+                >
+                    Рейтинг направлений
+                </button>
+            </div>
+        </div>
+    </section>
+    <section id="blog" class="py-[50px] py-[100px] md:py-[100px] md:pb-[200px] bg-background">
+        <div class="max-w-1212 mx-auto px-4 flex flex-col gap-[50px]">
+            <div class="flex flex-col gap-2 mx-auto items-center">
+                <span class="text-yellow text-base md:text-[24px] font-regular">делимся впечатлениями</span>
+                <h2 class="text-[24px] md:text-[32px] font-bold text-black leading-tight">
+                    Блог о путешествиях
+                </h2>
+            </div>
+
+            <div class="relative">
+                <div class="swiper blog-swiper lg:hidden">
+                    <div class="swiper-wrapper">
+                        <article class="swiper-slide bg-white rounded-[6px] overflow-hidden flex flex-col md:flex-row md:p-4 gap-6">
+                        <img 
+                            src="images/travel-1.webp" 
+                            alt="Красивая Италия" 
+                            class="w-full md:w-[230px] h-[280px] object-cover"
+                        >
+                        <div class="p-4 md:px-0 flex flex-col flex-1">
+                            <h3 class="text-xl md:text-2xl font-bold text-black mb-3 leading-tight">
+                                Красивая Италия, какая она в реальности?
+                            </h3>
+                            <p class="text-base text-black/70 mb-4 leading-relaxed flex-1 line-clamp-5">
+                                Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.
+                            </p>
+                            <div class="flex items-center justify-between mt-auto pt-4">
+                                <span class="text-yellow text-sm font-medium">01/04/2023</span>
+                                <a href="#" class="text-green text-base font-semibold hover:opacity-80 transition-opacity">
+                                    читать статью
+                                </a>
+                            </div>
+                        </div>
+                        </article>
+                        <article class="swiper-slide bg-white rounded-[6px] overflow-hidden flex flex-col md:flex-row md:p-4 gap-6">
+                            <img 
+                                src="images/travel-2.webp" 
+                                alt="Весь мир открыт" 
+                                class="w-full md:w-[230px] h-[280px] object-cover"
+                            >
+                            <div class="p-4 md:px-0 flex flex-col flex-1">
+                                <h3 class="text-xl md:text-2xl font-bold text-black mb-3 leading-tight">
+                                    Долой сомнения! Весь мир открыт для вас!
+                                </h3>
+                                <p class="text-base text-black/70 mb-4 leading-relaxed flex-1 line-clamp-5">
+                                    Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации ... независимые способы реализации соответствующих условий активизации ...Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации ... независимые способы реализации соответствующих условий активизации ...
+                                </p>
+                                <div class="flex items-center justify-between mt-auto pt-4">
+                                    <span class="text-yellow text-sm font-medium">01/04/2023</span>
+                                    <a href="#" class="text-green text-base font-semibold hover:opacity-80 transition-opacity">
+                                        читать статью
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="swiper-slide bg-white rounded-[6px] overflow-hidden flex flex-col md:flex-row md:p-4 gap-6">
+                            <img 
+                                src="images/travel-3.webp" 
+                                alt="Путешествие в одиночку" 
+                                class="w-full md:w-[230px] h-[280px] object-cover"
+                            >
+                            <div class="p-4 md:px-0 flex flex-col flex-1">
+                                <h3 class="text-xl md:text-2xl font-bold text-black mb-3 leading-tight">
+                                    Как подготовиться к путешествию в одиночку?
+                                </h3>
+                                <p class="text-base text-black/70 mb-4 leading-relaxed flex-1 line-clamp-5">
+                                    Для современного мира базовый вектор развития предполагает.
+                                </p>
+                                <div class="flex items-center justify-between mt-auto pt-4">
+                                    <span class="text-yellow text-sm font-medium">01/04/2023</span>
+                                    <a href="#" class="text-green text-base font-semibold hover:opacity-80 transition-opacity">
+                                        читать статью
+                                    </a>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="swiper-slide bg-white rounded-[6px] overflow-hidden flex flex-col md:flex-row md:p-4 gap-6">
+                        <img 
+                            src="images/travel-4.webp" 
+                            alt="Индия" 
+                            class="w-full md:w-[230px] h-[280px] object-cover"
+                        >
+                        <div class="p-4 md:px-0 flex flex-col flex-1">
+                            <h3 class="text-xl md:text-2xl font-bold text-black mb-3 leading-tight">
+                                Индия ... летим?
+                            </h3>
+                            <p class="text-base text-black/70 mb-4 leading-relaxed flex-1">
+                                Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.
+                            </p>
+                            <div class="flex items-center justify-between mt-auto pt-4">
+                                <span class="text-yellow text-sm font-medium">01/04/2023</span>
+                                <a href="#" class="text-green text-base font-semibold hover:opacity-80 transition-opacity">
+                                    читать статью
+                                </a>
+                            </div>
+                        </div>
+                        </article>
+                    </div>
+                </div>
+                <div class="hidden lg:grid lg:grid-cols-2 gap-6">
+                    <article class="bg-white rounded-[6px] overflow-hidden flex flex-col md:flex-row md:p-4 gap-6">
+                        <img 
+                            src="images/travel-1.webp" 
+                            alt="Красивая Италия" 
+                            class="w-full md:w-[230px] h-[280px] object-cover"
+                        >
+                        <div class="p-4 md:px-0 flex flex-col flex-1">
+                            <h3 class="text-xl md:text-2xl font-bold text-black mb-3 leading-tight">
+                                Красивая Италия, какая она в реальности?
+                            </h3>
+                            <p class="text-base text-black/70 mb-4 leading-relaxed flex-1 line-clamp-4">
+                                Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.
+                            </p>
+                            <div class="flex items-center justify-between mt-auto pt-4">
+                                <span class="text-yellow text-sm font-medium">01/04/2023</span>
+                                <a href="#" class="text-green text-base font-semibold hover:opacity-80 transition-opacity">
+                                    читать статью
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="bg-white rounded-[6px] overflow-hidden flex flex-col md:flex-row md:p-4 gap-6">
+                        <img 
+                            src="images/travel-2.webp" 
+                            alt="Весь мир открыт" 
+                            class="w-full md:w-[230px] h-[280px] object-cover"
+                        >
+                        <div class="p-4 md:px-0 flex flex-col flex-1">
+                            <h3 class="text-xl md:text-2xl font-bold text-black mb-3 leading-tight">
+                                Долой сомнения! Весь мир открыт для вас!
+                            </h3>
+                            <p class="text-base text-black/70 mb-4 leading-relaxed flex-1 line-clamp-4">
+                                Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации ... независимые способы реализации соответствующих условий активизации ...
+                            </p>
+                            <div class="flex items-center justify-between mt-auto pt-4">
+                                <span class="text-yellow text-sm font-medium">01/04/2023</span>
+                                <a href="#" class="text-green text-base font-semibold hover:opacity-80 transition-opacity">
+                                    читать статью
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="bg-white rounded-[6px] overflow-hidden flex flex-col md:flex-row md:p-4 gap-6">
+                        <img 
+                            src="images/travel-3.webp" 
+                            alt="Путешествие в одиночку" 
+                            class="w-full md:w-[230px] h-[280px] object-cover"
+                        >
+                        <div class="p-4 md:px-0 flex flex-col flex-1">
+                            <h3 class="text-xl md:text-2xl font-bold text-black mb-3 leading-tight">
+                                Как подготовиться к путешествию в одиночку?
+                            </h3>
+                            <p class="text-base text-black/70 mb-4 leading-relaxed flex-1 line-clamp-4">
+                                Для современного мира базовый вектор развития предполагает.
+                            </p>
+                            <div class="flex items-center justify-between mt-auto pt-4">
+                                <span class="text-yellow text-sm font-medium">01/04/2023</span>
+                                <a href="#" class="text-green text-base font-semibold hover:opacity-80 transition-opacity">
+                                    читать статью
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="bg-white rounded-[6px] overflow-hidden flex flex-col md:flex-row md:p-4 gap-6">
+                        <img 
+                            src="images/travel-4.webp" 
+                            alt="Индия" 
+                            class="w-full md:w-[230px] h-[280px] object-cover"
+                        >
+                        <div class="p-4 md:px-0 flex flex-col flex-1">
+                            <h3 class="text-xl md:text-2xl font-bold text-black mb-3 leading-tight">
+                                Индия ... летим?
+                            </h3>
+                            <p class="text-base text-black/70 mb-4 leading-relaxed flex-1">
+                                Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.
+                            </p>
+                            <div class="flex items-center justify-between mt-auto pt-4">
+                                <span class="text-yellow text-sm font-medium">01/04/2023</span>
+                                <a href="#" class="text-green text-base font-semibold hover:opacity-80 transition-opacity">
+                                    читать статью
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <div class="flex justify-center">
+                <button 
+                    type="button" 
+                    class="px-[36px] py-4 bg-green text-white border-none rounded-[4px] text-base font-semibold cursor-pointer transition-opacity hover:opacity-90"
+                    aria-label="Посмотреть другие материалы блога"
+                >
+                    Другие материалы
+                </button>
+            </div>
+        </div>
+    </section>
+    <section id="newsletter" class="relative z-10 -mb-[100px] md:-mb-[100px] md:-mt-[98px]">
+        <div class="max-w-1212 mx-auto px-4">
+            <div class="bg-white rounded-[6px] p-6 md:p-10 shadow-[0px_0px_15px_0px_rgba(24,18,30,0.12)] h-[196px]">
+                <div class="flex flex-col md:flex-row gap-6 md:gap-[64px]">
+                    <div class="space-y-2 text-center md:text-left">
+                        <span class="text-yellow text-base md:text-[24px] font-regular">актуально</span>
+                        <h2 class="text-[26px] font-bold text-black leading-tight">
+                           Получайте полезные рассылки о путешествиях
+                        </h2>
+                    </div>
+
+                    <div class="flex flex-col gap-2">
+                        <form class="flex flex-col md:flex-row gap-4 items-end">
+                            <div class="flex-1 w-full">
+                                <label for="newsletter-email" class="block text-sm text-black mb-2">Введите e-mail адрес</label>
+                                <input 
+                                    type="email" 
+                                    id="newsletter-email" 
+                                    name="email"
+                                    placeholder="name@domain.com"
+                                    class="w-full py-3 px-4 bg-gray-100 border-none rounded-[4px] text-base text-black outline-none placeholder:text-gray-400 focus:bg-gray-200 transition-colors"
+                                    aria-label="Введите e-mail адрес для подписки"
+                                    aria-required="true"
+                                >
+                            </div>
+                            <button 
+                                type="submit" 
+                                class="px-6 py-3 bg-green text-white border-none rounded-[4px] text-base font-semibold cursor-pointer whitespace-nowrap transition-opacity hover:opacity-90 w-full md:w-auto"
+                                aria-label="Подписаться на новости"
+                            >
+                                Подписаться на новости
+                            </button>
+                        </form>
+                        <p class="text-sm text-black/70 text-center md:text-left leading-[18px]">
+                            подписываясь на новости, вы автоматически соглашаетесь с 
+                            <a href="#" class="underline hover:opacity-80 transition-opacity">условиями обработки персональных данных</a> 
+                            и 
+                            <a href="#" class="underline hover:opacity-80 transition-opacity">правилами рекламных рассылок</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contacts" class="bg-green pt-[120px] md:pt-[160px] pb-8">
+        <div class="max-w-1212 mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-12">
+                <div class="flex flex-col gap-4">
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-2">Компания «РумТибет»</h3>
+                    <p class="text-base text-white/80 leading-relaxed">
+                        Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur" и занялся его поисками в классической латинской литературе.
+                    </p>
+                    <div class="flex flex-col gap-2 mt-2">
+                        <a href="mailto:info@domain.com" class="text-white/80 hover:text-white transition-colors">info@domain.com</a>
+                        <a href="tel:+71234567890" class="text-white/80 hover:text-white transition-colors">+7 (123) 456-78-90</a>
+                    </div>
+                    <div class="flex gap-4 mt-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors" aria-label="Telegram">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.12l-6.87 4.326-2.962-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors" aria-label="VKontakte">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12.785 16.241s.288-.031.436-.186c.136-.143.132-.414.132-.414s-.02-1.234.556-1.417c.569-.18 1.293.897 2.059 1.293.584.301 1.026.234 1.026.234l2.049-.031s1.072-.068.563-.917c-.042-.068-.299-.626-1.542-1.771-1.307-1.218-1.132-1.021.447-3.131.959-1.293 1.343-2.084 1.223-2.423-.114-.32-.82-.236-.82-.236l-2.108.013s-.157-.02-.271.056c-.114.076-.187.25-.187.25s-.334.894-.78 1.656c-.941 1.568-1.316 1.651-1.47 1.555-.357-.225-.268-.902-.268-1.385 0-1.505.228-2.133-.447-2.295-.224-.052-.388-.086-.962-.091-.734-.008-1.354.01-1.705.184-.236.116-.418.374-.308.389.136.018.442.081.605.299.212.279.204.903.204.903s.12 1.769-.279 1.988c-.275.153-.653-.16-1.467-1.621-.416-.923-.73-1.94-.73-1.94s-.061-.189-.17-.292c-.132-.123-.315-.162-.315-.162l-2.01.013s-.301.009-.411.136c-.099.115-.008.359-.008.359s1.585 3.728 3.38 5.614c1.646 1.724 3.53 1.607 3.53 1.607h.851s.257-.02.392.146c.127.157.123.455.123.455s-.018 1.287.066 1.783c.082.489.282.647.462.669.162.018 1.135.021 2.523-.031z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors" aria-label="Pinterest">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.619 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.487.535 6.624 0 11.99-5.367 11.99-11.987C23.97 5.39 18.592.026 11.97.026L12 0z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 flex items-center justify-center transition-colors" aria-label="Skype">
+                            <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12.315 0C8.085.011 4.815 1.92 3.105 4.665c-.825 1.305-1.305 2.76-1.38 4.35-.015.33-.015.66-.015.99-.09-.06-.195-.12-.27-.195C.63 8.55.015 9.465.015 10.59c0 .975.48 1.755 1.23 2.205.075.045.135.105.225.135-.015.405-.015.81 0 1.2.09 2.04.81 3.735 2.115 5.025 1.305 1.305 2.985 2.04 5.025 2.13.39.015.795.015 1.2 0 .03.09.075.15.12.225.465.75 1.245 1.23 2.22 1.23h.015c1.125 0 2.04-.615 2.565-1.44.075-.075.135-.18.195-.27.33 0 .645 0 .975-.015 1.59-.075 3.045-.555 4.35-1.38C20.07 4.815 21.985 8.085 21.995 12.315c0-.03.015-.06.015-.09.06-1.89.855-3.57 2.235-4.755.585-.51.585-1.26 0-1.77-.525-.525-1.275-.525-1.77 0-1.38 1.185-2.865 2.175-4.755 2.235 0 .03-.015.06-.015.09-.01-4.23-1.92-7.5-5.175-9.225-1.305-.825-2.76-1.305-4.35-1.38C8.955.015 8.625.015 8.295 0h.015z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-2">Наши услуги</h3>
+                    <ul class="flex flex-col gap-3 list-none">
+                        <li>
+                            <a href="#" class="text-white/80 hover:text-white transition-colors flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                                </svg>
+                                Прогулки в горы летом
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-white/80 hover:text-white transition-colors flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                                </svg>
+                                Зимние походы в горы
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-yellow hover:text-white transition-colors flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                                </svg>
+                                Посещение храмов в горах
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-white/80 hover:text-white transition-colors flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                                </svg>
+                                Экстремальные виды туризма
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-white/80 hover:text-white transition-colors flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                                </svg>
+                                <span class="flex items-center gap-2">
+                                    Походы в джунглях Амазонии
+                                    <span class="px-2 py-0.5 bg-white/20 text-white text-xs rounded">new</span>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-white/80 hover:text-white transition-colors flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                                </svg>
+                                Поездка в Африку
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="flex flex-col gap-4">
+                    <h3 class="text-xl md:text-2xl font-bold text-white mb-2">Важно для путешествий</h3>
+                    <ul class="flex flex-col gap-3 list-none">
+                        <li>
+                            <a href="#" class="text-white/80 hover:text-white transition-colors flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                                </svg>
+                                Как собрать в долгий поход?
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-white/80 hover:text-white transition-colors flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                                </svg>
+                                Жизненно важные предметы для похода
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-white/80 hover:text-white transition-colors flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                                </svg>
+                                Медицинская страховка, гарантии безопасности
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="text-white/80 hover:text-white transition-colors flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                                </svg>
+                                Если вы врач - загляните сюда
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <footer class="bg-black py-4">
+        <div class="max-w-1212 mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/80">
+                <span>ИП Константинопольский К.К., 2023</span>
+                <a href="#" class="underline hover:text-white transition-colors">
+                    Политика обработки персональных данных
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const burgerBtn = document.getElementById('burger-menu-btn');
+        const closeBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuOverlay = document.getElementById('menu-overlay');
+        const body = document.body;
+
+        function openMenu() {
+            mobileMenu.classList.remove('translate-x-full');
+            mobileMenu.setAttribute('aria-hidden', 'false');
+            menuOverlay.classList.remove('hidden', 'opacity-0');
+            menuOverlay.classList.add('opacity-100');
+            body.style.overflow = 'hidden';
+            burgerBtn.setAttribute('aria-expanded', 'true');
+        }
+
+        function closeMenu() {
+            mobileMenu.classList.add('translate-x-full');
+            mobileMenu.setAttribute('aria-hidden', 'true');
+            menuOverlay.classList.add('opacity-0');
+            menuOverlay.classList.remove('opacity-100');
+            setTimeout(() => {
+                menuOverlay.classList.add('hidden');
+            }, 300);
+            body.style.overflow = '';
+            burgerBtn.setAttribute('aria-expanded', 'false');
+        }
+
+        burgerBtn.addEventListener('click', openMenu);
+        closeBtn.addEventListener('click', closeMenu);
+        menuOverlay.addEventListener('click', closeMenu);
+
+        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !mobileMenu.classList.contains('translate-x-full')) {
+                closeMenu();
+            }
+        });
+
+        document.querySelectorAll('.custom-dropdown').forEach(dropdown => {
+            const toggle = dropdown.querySelector('.dropdown-toggle');
+            const menu = dropdown.querySelector('.dropdown-menu');
+            const hiddenInput = dropdown.querySelector('input[type="hidden"]');
+            const selectedText = dropdown.querySelector('.dropdown-selected-text');
+            const arrow = dropdown.querySelector('.dropdown-arrow');
+            const options = dropdown.querySelectorAll('.dropdown-option');
+
+            function toggleDropdown() {
+                const isOpen = !menu.classList.contains('hidden');
+                
+                document.querySelectorAll('.custom-dropdown .dropdown-menu').forEach(otherMenu => {
+                    if (otherMenu !== menu) {
+                        otherMenu.classList.add('hidden');
+                        const otherToggle = otherMenu.closest('.custom-dropdown').querySelector('.dropdown-toggle');
+                        const otherArrow = otherToggle.querySelector('.dropdown-arrow');
+                        otherToggle.setAttribute('aria-expanded', 'false');
+                        if (otherArrow) {
+                            otherArrow.classList.remove('rotate-180');
+                        }
+                    }
+                });
+
+                if (isOpen) {
+                    menu.classList.add('hidden');
+                    toggle.setAttribute('aria-expanded', 'false');
+                    if (arrow) {
+                        arrow.classList.remove('rotate-180');
+                    }
+                } else {
+                    menu.classList.remove('hidden');
+                    toggle.setAttribute('aria-expanded', 'true');
+                    if (arrow) {
+                        arrow.classList.add('rotate-180');
+                    }
+                }
+            }
+
+            toggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleDropdown();
+            });
+
+            options.forEach(option => {
+                option.addEventListener('click', () => {
+                    const value = option.getAttribute('data-value');
+                    const text = option.textContent.trim();
+                    
+                    hiddenInput.value = value;
+                    selectedText.textContent = text;
+                    
+                    options.forEach(opt => opt.classList.remove('bg-green', 'text-white'));
+                    option.classList.add('bg-green', 'text-white');
+                    
+                    toggleDropdown();
+                });
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!dropdown.contains(e.target)) {
+                    menu.classList.add('hidden');
+                    toggle.setAttribute('aria-expanded', 'false');
+                    if (arrow) {
+                        arrow.classList.remove('rotate-180');
+                    }
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !menu.classList.contains('hidden')) {
+                    toggleDropdown();
+                }
+            });
+        });
+
+        const dateFromInput = document.getElementById('tour-date-from');
+        const dateToInput = document.getElementById('tour-date-to');
+
+        if (dateFromInput && dateToInput) {
+            const today = new Date().toISOString().split('T')[0];
+            dateFromInput.setAttribute('min', today);
+            dateToInput.setAttribute('min', today);
+
+            dateFromInput.addEventListener('change', () => {
+                const fromDate = dateFromInput.value;
+                if (fromDate) {
+                    dateToInput.setAttribute('min', fromDate);
+                    if (dateToInput.value && dateToInput.value < fromDate) {
+                        dateToInput.value = '';
+                    }
+                }
+            });
+
+            dateToInput.addEventListener('change', () => {
+                const toDate = dateToInput.value;
+                const fromDate = dateFromInput.value;
+                if (toDate && fromDate && toDate < fromDate) {
+                    alert('Дата окончания не может быть раньше даты начала');
+                    dateToInput.value = '';
+                }
+            });
+        }
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // Инициализация Swiper для популярных направлений
+        const destinationsSwiper = new Swiper('.destinations-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 24,
+            grabCursor: true,
+            breakpoints: {
+                640: {
+                    slidesPerView: 1.2,
+                }
+            }
+        });
+
+        // Инициализация Swiper для блога
+        const blogSwiper = new Swiper('.blog-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 24,
+            grabCursor: true,
+            breakpoints: {
+                640: {
+                    slidesPerView: 1.2,
+                }
+            }
+        });
+    </script>
 </body>
 </html>
 
